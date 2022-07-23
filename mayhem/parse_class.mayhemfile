@@ -1,0 +1,7 @@
+project: lapin
+target: parse-class
+
+cmds:
+  - cmd: /parse_class
+  - cmd: /parse_class_no_inst @@
+    libfuzzer: false
