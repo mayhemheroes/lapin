@@ -1,0 +1,29 @@
+[package]
+name = "lapin-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.lapin]
+path = ".."
+default-features = false
+features = ["codegen"]
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "parse_class"
+path = "fuzz_targets/parse_class.rs"
+test = false
+doc = false
+
+[profile.release]
+debug = true
